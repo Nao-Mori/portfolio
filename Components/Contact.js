@@ -21,12 +21,12 @@ const Contact=({narrow})=>{
         }
     }
     return(
-        <div className="text-center" style={{height:"88vh"}}>
+        <div className="text-center" style={{minHeight:"88vh"}}>
             <h1>Contact Me!</h1>
             <div className="container-component">
                 <div className="block-left"/>
                 <div className="block-right">
-                    <div style={{maxWidth:"500px"}}>
+                    <div className="block-right-inside">
                         {sent?
                         <div>
                             <h1>Thank You!</h1>

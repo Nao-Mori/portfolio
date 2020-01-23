@@ -1,5 +1,5 @@
 import React from "react"
-import { Container,Button,Image } from "react-bootstrap"
+import { Image } from "react-bootstrap"
 
 const Projects=props=>{
     const [flip,setFlip] = React.useState(true)
@@ -18,27 +18,31 @@ const Projects=props=>{
                     </div>
                 </div>
                 <div className="block-right">
-                    <div style={{maxWidth:"550px",marginRight:"auto"}}>
+                    <div className="block-right-inside">
                     {flip?
                         <div>
                             <div className="uppercard">
-                                <img src="/images/motimanager-11.png" style={{width:"80%",height:"auto"}}/>
-                                <h5></h5>
+
                             </div>
                             <div className="lowercard">
-                                <h4>Motimanager</h4>
-                                <h5></h5>
+                                <img src="/images/motimanager-11.png" style={{width:"80%",height:"auto",maxWidth:"300px"}}/>
+                                <br/>
+                                <a href="https://motimanager.com" target="_blank">
+                                    <button>Visit</button>
+                                </a>
                             </div>
                         </div>
                     :
                         <div>
                             <div className="uppercard">
-                                <img src="/images/motimanager-11.png" style={{width:"80%",height:"auto"}}/>
-                                <h5></h5>
+
                             </div>
                             <div className="lowercard">
-                                <h4>Dominaire</h4>
-                                <h5></h5>
+                                <img src="/images/dominaire-11.png" style={{width:"80%",height:"auto",maxWidth:"300px"}}/>
+                                <br/>
+                                <a href="https://dominaire.nao-mori.com" target="_blank">
+                                    <button>Visit</button>
+                                </a>
                             </div>
                         </div>
                     }
