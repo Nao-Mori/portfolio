@@ -1,16 +1,23 @@
 html {
   scroll-behavior: smooth;
-  font-style: italic;
+}
+body{
+  font-family: 'Kalam';
 }
 h3{
   font-weight: 700;
-  font-style: italic;
 }
 h1{
   padding-top:60px;
   padding-bottom:10px;
   font-weight: 700;
-  font-style: italic;
+}
+h2{
+  font-weight: 700;
+}
+
+h6{
+  font-size: 17px;
 }
 
 h5{
@@ -40,6 +47,9 @@ h5{
   max-width: 300px;
   box-shadow: 0px 10px 14px rgba(0, 0, 0, 0.3);
 }
+.profile:hover{
+  filter: brightness(110%)
+}
 
 .skills{
   position: relative;
@@ -56,10 +66,29 @@ h5{
   background-color: orange;
   font-size: 20px;
   box-shadow: 0px 10px 14px rgba(0, 0, 0, 0.3);
-  font-weight: 600;
+  font-weight: 500;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.circle:hover{
+  width: 23%;
+  height: 23%;
+  font-size: 23px;
 }
 .circle-text{
-  padding-top: 30%;
+  padding-top: 35%;
+}
+.circle-small{
+  width: auto;
+  min-width: 30px;
+  padding: 0 8px 1px 8px;
+  background-color: rgba(255, 171, 44, 0.8);
+  border-radius: 30px;
+  text-align: center;
+  color: white;
+  font-style: normal;
+  font-weight: 500;
+  margin: 5px 2px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 p{
@@ -88,9 +117,9 @@ a:link, a:visited{
 .navlink{
   cursor: pointer;
   margin-left:15px;
-  padding-top:8px;
-  font-style: italic;
+  padding-top:10px;
   font-weight: 700;
+  font-size: 22px;
 }
 
 .navlink:hover{
@@ -98,7 +127,6 @@ a:link, a:visited{
 }
 
 .navback{
-  /* background-image: linear-gradient(to top, rgba(255,255,255,0),  rgba(255,255,255,0.6), rgba(255,255,255,0.9)); */
   background-color: rgba(255,255,255,0.3);
   padding: 5px;
   position: fixed;
@@ -127,19 +155,18 @@ label {
   margin-top:5px;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
-  height: 300px;
   width: 100%;
   background-color: white;
-  padding: 15px;
+  overflow: hidden;
 }
 
 .lowercard{
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
-  height: 250px;
   width: 100%;
-  background-color: rgba(255,255,255,0.3);
-  padding: 10px;
+  background-color: rgba(255,255,255,0.5);
+  padding: 15px 20px 20px 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 button{
@@ -153,7 +180,8 @@ button{
   display: inline-block;
   font-size: 17px;
   box-shadow: 0px 10px 14px rgba(0, 0, 0, 0.2);
-  font-weight: 600;
+  font-weight: 500;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 button:hover{
@@ -176,7 +204,7 @@ button:focus {outline:0;}
   display: flex;
   margin: 0 auto;
   max-width: 550px;
-  padding-top: 150px;
+  padding-top: 170px;
 }
 .choose{
   height:auto;
@@ -224,6 +252,11 @@ button:focus {outline:0;}
 .spacer-bottom{
   height: 0px;
 }
+.project-img{
+  width: 80%;
+  height: auto;
+  max-width: 270px;
+}
 
 @media screen and (max-width: 1200px) {
   .block-left{
@@ -244,7 +277,7 @@ button:focus {outline:0;}
     max-width: 550px;
   }
   .circle{
-    font-size: 18px;
+    font-size: 19px;
   }
   .block-right-inside{
     margin: auto;
@@ -252,6 +285,9 @@ button:focus {outline:0;}
   }
   .spacer-bottom{
     height: 300px
+  }
+  .circle:hover{
+    font-size: 21px;
   }
 }
 
@@ -265,6 +301,15 @@ button:focus {outline:0;}
   .circle{
     font-size: 13px;
   }
+  .circle:hover{
+    font-size: 15px;
+  }
+  h3{
+    font-size: 20px;
+  }
+  h6{
+    font-size: 15px;
+  }
 }
 
 @media screen and (max-width: 400px) {
@@ -273,5 +318,34 @@ button:focus {outline:0;}
   }
   .navlink{
     padding-top: 12px;
+    font-size: 17px;
   }
+}
+
+.stage {
+  display: flex;
+}
+
+.box {
+  align-self: flex-end;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  margin: 0 auto 0 auto;
+  transform-origin: bottom;
+  font-weight: 700;
+  font-style: normal;
+  color: rgb(61, 61, 61)
+}
+.bounce-7 {
+  animation-name: bounce-7;
+  animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+}
+@keyframes bounce-7 {
+  0%   { transform:     translateY(0); }
+  10%  { transform:    translateY(0); }
+  30%  { transform:    translateY(-15%); }
+  50%  { transform:  translateY(0); }
+  57%  { transform:      translateY(-5%); }
+  64%  { transform:       translateY(0); }
+  100% { transform:      translateY(0); }
 }

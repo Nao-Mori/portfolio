@@ -9,12 +9,15 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 const App=props=>{
     const [navshow,setNavshow]=React.useState(false)
+    const [trick,setTrick]=React.useState(false)
     const [pos,setPos]=React.useState(0)
     const [bgcolor,setBgcolor]=React.useState([])
+    
     const projectRef = React.useRef()
     const aboutmeRef = React.useRef()
     const contactRef = React.useRef()
     const top = React.useRef()
+    
 
     const fade = useSpring({
         from: {opacity:0},
@@ -33,6 +36,8 @@ const App=props=>{
         setInterval(()=>{
             if(aboutmeRef.current.offsetTop<=window.scrollY) setNavshow(true)
             else setNavshow(false)
+            if(contactRef.current.offsetTop<=window.scrollY) setTrick(true)
+            else setTrick(false)
             let pos = typeof window.orientation==="undefined"?Math.round(window.scrollY/95)+1:Math.round(window.scrollY/60)+1
             let pos2 = typeof window.orientation==="undefined"?Math.round(window.scrollY/100):Math.round(window.scrollY/90)
             if(pos>29) pos=30
@@ -43,7 +48,7 @@ const App=props=>{
 
     return(
         <div ref={top}>
-            <Background pos={pos} bgcolor={bgcolor}/>
+            <Background pos={pos} bgcolor={bgcolor} trick={trick}/>
             <animated.div className="navback" style={navFade}>
                 <div style={{display: "flex"}}>
                     <img alt="icon" src="/android-icon-36x36.png" onClick={()=>scrollTo(top)} className="pointer"/>
@@ -57,14 +62,14 @@ const App=props=>{
                 <button onClick={()=>scrollTo(aboutmeRef)}>Check Me Out</button>
             </div>
             <div ref={aboutmeRef}><AboutMe /></div>
-            <div ref={projectRef}><Projects/></div>
-            <div ref={contactRef}><Contact /></div>
+            <div ref={projectRef}><Projects /></div>
+            <div ref={contactRef}><Contact goTop={()=>scrollTo(top)} /></div>
             <div className="spacer-bottom"/>
             <footer className="text-center">
-                <a href="https://github.com/nao-mori" target="_blank">
+                <a href="https://github.com/nao-mori" target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon className="mr-2 brand-icon" size="3x" icon={faGithub}/>
                 </a>
-                <a href="https://www.linkedin.com/in/%E9%A0%86-%E6%A3%AE-878223171/" target="_blank">
+                <a href="https://www.linkedin.com/in/%E9%A0%86-%E6%A3%AE-878223171/" target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon className="ml-2 brand-icon" size="3x" icon={faLinkedin}/>
                 </a>
                 <div className="pt-2">©Nao Mori 2020</div>
