@@ -12,6 +12,7 @@ const App=props=>{
     const [trick,setTrick]=React.useState(false)
     const [pos,setPos]=React.useState(0)
     const [bgcolor,setBgcolor]=React.useState([])
+    const [current,setCurrent]=React.useState([])
     
     const projectRef = React.useRef()
     const aboutmeRef = React.useRef()
@@ -34,8 +35,16 @@ const App=props=>{
 
     React.useEffect(()=>{
         setInterval(()=>{
-            if(aboutmeRef.current.offsetTop<=window.scrollY) setNavshow(true)
-            else setNavshow(false)
+            if(aboutmeRef.current.offsetTop<=window.scrollY){
+                setNavshow(true)
+                if(contactRef.current.offsetTop<=window.scrollY) setCurrent(3)
+                else if(projectRef.current.offsetTop<=window.scrollY) setCurrent(2)
+                else setCurrent(1)
+            }
+            else {
+                setNavshow(false)
+                setCurrent(0)
+            }
             if(contactRef.current.offsetTop<=window.scrollY) setTrick(true)
             else setTrick(false)
             let pos = typeof window.orientation==="undefined"?Math.round(window.scrollY/95)+1:Math.round(window.scrollY/60)+1
@@ -52,9 +61,9 @@ const App=props=>{
             <animated.div className="navback" style={navFade}>
                 <div style={{display: "flex"}}>
                     <img alt="icon" src="/android-icon-36x36.png" onClick={()=>scrollTo(top)} className="pointer"/>
-                    <h5 className="navlink" onClick={()=>scrollTo(aboutmeRef)}>About Me</h5>
-                    <h5 className="navlink" onClick={()=>scrollTo(projectRef)}>Projects</h5>
-                    <h5 className="navlink" onClick={()=>scrollTo(contactRef)}>Contact</h5>
+                    <h5 className={current===1?"navlink-active navlink":"navlink"}onClick={()=>scrollTo(aboutmeRef)}>About Me</h5>
+                    <h5 className={current===2?"navlink-active navlink":"navlink"} onClick={()=>scrollTo(projectRef)}>Projects</h5>
+                    <h5 className={current===3?"navlink-active navlink":"navlink"} onClick={()=>scrollTo(contactRef)}>Contact</h5>
                 </div>
             </animated.div>
             <div style={{paddingTop:"15vw",height:"100vh", textAlign:"center"}}>
