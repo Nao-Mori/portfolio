@@ -1,4 +1,7 @@
 import React from "react"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMapMarkerAlt, faFlag } from '@fortawesome/free-solid-svg-icons'
+
 
 const pink = "#FF8178"
 const green = "#7EBF83"
@@ -37,11 +40,15 @@ const AboutMe=()=>{
                 </div>
                 <div className="block-right">
                     <div className="block-right-inside">
-                    <img alt="profile" src="/images/profile.jpg" className="profile mb-3"/>
-                    <h2>Nao Mori</h2>
-                    <h5>
-                        Full stack web developer that loves eating, traveling and talking.
-                    </h5>
+                        <img alt="profile" src="/images/profile.jpg" className="profile mb-3"/>
+                        <h2>Nao Mori</h2>
+                        <h5 className="mb-3">
+                            I'm a Full Stack Web Developer. I have serious passion for creating responsive web apps that are easy to use, fast and fun.
+                        </h5>
+                        <div style={{fontSize:"20px"}}>
+                        <FontAwesomeIcon icon={faMapMarkerAlt} style={{color:green}}/> Düsseldorf/Germany
+                        <FontAwesomeIcon icon={faFlag} style={{color: pink, marginLeft:"15px"}}/> Kyoto/Japan
+                        </div>
                     </div>
                 </div>
             </div>

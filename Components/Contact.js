@@ -1,11 +1,13 @@
 import React from "react"
-import { FormControl } from "react-bootstrap"
+import { FormControl, Spinner } from "react-bootstrap"
 import { animated, useSpring } from "react-spring"
+import * as emailjs from 'emailjs-com'
 
 var int
 
 const Contact=props=>{
     const [sent,setsent] = React.useState(false)
+    const [sending,setSending] = React.useState(false)
     const [mail,setmail] = React.useState("")
     const [name,setname] = React.useState("")
     const [message,setmessage] = React.useState("")
@@ -16,16 +18,29 @@ const Contact=props=>{
     })
 
     const submit=()=>{
-        if(mail===""||name===""||message===""){
+        if(!mail || !name || !message){
             setincomplete(true)
             clearTimeout(int)
             int = setTimeout(()=>{
                 setincomplete(false)
             },1000)
         } else {
-            setsent(true)
+            setSending(true)
+            let templateParams = {
+                from_name: `${name} (${mail})`,
+                to_name: 'Nao',
+                subject: 'new message',
+                message_html: message,
+            }
+            emailjs.send(
+                'gmail',
+                'template_E4vRe8bo',
+                templateParams,
+                'user_DidFMxhza8zx9YgRNBTYS'
+            ).then(()=>setsent(true)).catch()
         }
     }
+    
     return(
         <div className="text-center" style={{minHeight:"88vh"}}>
             <h1>Contact Me!</h1>
@@ -44,26 +59,28 @@ const Contact=props=>{
                         :
                         <div>
                             <div className="position-relative">
-                                <label style={mail===""?{fontSize:"23px",top:"-20%"}:{fontSize:"13px",top:"-27%",paddingLeft:"12px"}}>Email</label>
+                                <label style={!mail?{fontSize:"23px",top:"-20%",paddingLeft:"18px"}:{fontSize:"13px",top:"-27%",paddingLeft:"16px"}}>Email</label>
                                 <FormControl
                                     type="email"
                                     value={mail}
                                     onChange={event=>setmail(event.target.value)}
-                                    style={{marginBottom: "20px", paddingTop:mail===""?"0":"20px",height:"50px",fontSize:"18px",borderRadius:"25px"}}
+                                    className="input-custom"
+                                    style={{paddingTop:!mail?"0":"20px"}}
                                 />
                             </div>
                             <div className="position-relative">
-                                <label style={name===""?{fontSize:"23px",top:"-20%"}:{fontSize:"13px",top:"-27%",paddingLeft:"12px"}}>Name</label>
+                                <label style={!name?{fontSize:"23px",top:"-20%",paddingLeft:"18px"}:{fontSize:"13px",top:"-27%",paddingLeft:"16px"}}>Name</label>
                                 <FormControl
                                     type="text"
                                     value={name}
                                     onChange={event=>setname(event.target.value)}
-                                    style={{marginBottom: "20px", paddingTop:name===""?"0":"20px",height:"50px",fontSize:"18px",borderRadius:"25px"}}
+                                    className="input-custom"
+                                    style={{paddingTop:!name?"0":"20px"}}
                                 />
                             </div>
                             <div className="position-relative">
-                                <label style={message===""?{fontSize:"23px",top:"-7%"}:
-                                {fontSize:"13px",top:"-11%",width:"90%",textAlign:"left",backgroundColor:"white",borderRadius:"25%",margin:"0 auto",padding:"0",left:"14px"}}>
+                                <label style={!message?{fontSize:"23px",top:"-7%"}:
+                                {fontSize:"13px",top:"-10%",width:"90%",textAlign:"left",backgroundColor:"white",borderRadius:"25%",margin:"0 auto",padding:"0",left:"14px"}}>
                                     Message
                                 </label>
                                 <FormControl
@@ -72,12 +89,14 @@ const Contact=props=>{
                                     type="text"
                                     value={message}
                                     onChange={event=>setmessage(event.target.value)}
-                                    style={{marginBottom: "20px", paddingTop:message===""?"8px":"18px",fontSize:"18px",height:"150px",borderRadius:"25px"}}
+                                    style={{marginBottom: "20px", paddingTop:!message?"8px":"18px",fontSize:"18px",height:"150px",borderRadius:"25px"}}
                                 />
                             </div>
-                            <button onClick={submit}>
+                            {sending?
+                            <Spinner animation="grow" style={{color:"rgb(255, 118, 118)"}}/>
+                            :<button onClick={submit}>
                                 Submit
-                            </button>
+                            </button>}
                             <animated.div className="mt-2" style={fade}>
                                 Please complete the form.
                             </animated.div>

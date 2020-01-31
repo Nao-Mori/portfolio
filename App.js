@@ -7,6 +7,8 @@ import Background from "./Background"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
+import { Link, Element } from 'react-scroll'
+
 const App=props=>{
     const [navshow,setNavshow]=React.useState(false)
     const [trick,setTrick]=React.useState(false)
@@ -30,7 +32,6 @@ const App=props=>{
        top: navshow? "0%": "-5%"
     })
     
-    //const [anim, setAnim] = React.useState(0)
     const scrollTo = (ref) => window.scrollTo(0, ref.current.offsetTop)
 
     React.useEffect(()=>{
@@ -47,32 +48,43 @@ const App=props=>{
             }
             if(contactRef.current.offsetTop<=window.scrollY) setTrick(true)
             else setTrick(false)
-            let pos = typeof window.orientation==="undefined"?Math.round(window.scrollY/95)+1:Math.round(window.scrollY/60)+1
-            let pos2 = typeof window.orientation==="undefined"?Math.round(window.scrollY/100):Math.round(window.scrollY/90)
+            let pos = typeof window.orientation==="undefined"?Math.round(window.scrollY/95)+1:30
+            let pos2 = typeof window.orientation==="undefined"?Math.round(window.scrollY/100):Math.round(window.scrollY/93)
             if(pos>29) pos=30
+            else if(pos<1) pos=1
             setPos(pos)
             setBgcolor(String(211+pos2)+",233,"+String(235-pos2))
         },100)
     },[props])
 
     return(
-        <div ref={top}>
+        <div ref={top} name="top">
             <Background pos={pos} bgcolor={bgcolor} trick={trick}/>
             <animated.div className="navback" style={navFade}>
                 <div style={{display: "flex"}}>
-                    <img alt="icon" src="/android-icon-36x36.png" onClick={()=>scrollTo(top)} className="pointer"/>
-                    <h5 className={current===1?"navlink-active navlink":"navlink"}onClick={()=>scrollTo(aboutmeRef)}>About Me</h5>
-                    <h5 className={current===2?"navlink-active navlink":"navlink"} onClick={()=>scrollTo(projectRef)}>Projects</h5>
-                    <h5 className={current===3?"navlink-active navlink":"navlink"} onClick={()=>scrollTo(contactRef)}>Contact</h5>
+                    <Link activeClass="active" to="top" spy={false} smooth={true} offset={0} duration={300}>
+                        <img alt="icon" src="/android-icon-36x36.png" style={{width:"30px",height:"30px",marginLeft:"15px"}} className="pointer"/>
+                    </Link>
+                    <Link activeClass="active" to="aboutme" spy={false} smooth={true} offset={0} duration={300}>
+                        <h5 className={current===1?"navlink-active navlink":"navlink"}>About Me</h5>
+                    </Link>
+                    <Link activeClass="active" to="project" spy={false} smooth={true} offset={0} duration={300}>
+                        <h5 className={current===2?"navlink-active navlink":"navlink"}>Projects</h5>
+                    </Link>
+                    <Link activeClass="active" to="contact" spy={false} smooth={true} offset={0} duration={300}>
+                        <h5 className={current===3?"navlink-active navlink":"navlink"}>Contact</h5>
+                    </Link>
                 </div>
             </animated.div>
             <div style={{paddingTop:"15vw",height:"100vh", textAlign:"center"}}>
                 <animated.h1 style={fade}>Hey, I'm Nao Mori.</animated.h1>
-                <button onClick={()=>scrollTo(aboutmeRef)}>Check Me Out</button>
+                <Link activeClass="active" to="aboutme" spy={false} smooth={true} offset={0} duration={300}>
+                    <button>Check Me Out</button>
+                </Link>
             </div>
-            <div ref={aboutmeRef}><AboutMe /></div>
-            <div ref={projectRef}><Projects /></div>
-            <div ref={contactRef}><Contact goTop={()=>scrollTo(top)} /></div>
+            <div ref={aboutmeRef} name="aboutme"><AboutMe /></div>
+            <div ref={projectRef} name="project"><Projects /></div>
+            <div ref={contactRef} name="contact"><Contact goTop={()=>scrollTo(top)} /></div>
             <div className="spacer-bottom"/>
             <footer className="text-center">
                 <a href="https://github.com/nao-mori" target="_blank" rel="noopener noreferrer">
@@ -83,6 +95,7 @@ const App=props=>{
                 </a>
                 <div className="pt-2">©Nao Mori 2020</div>
             </footer>
+            <Element name="test1"/>
         </div>
     )
 }

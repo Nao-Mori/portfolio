@@ -8,7 +8,7 @@ h3{
   font-weight: 700;
 }
 h1{
-  padding-top:60px;
+  padding-top:70px;
   padding-bottom:10px;
   font-weight: 700;
 }
@@ -167,20 +167,19 @@ label {
 
 .uppercard{
   margin-top:5px;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
   width: 100%;
   background-color: white;
   overflow: hidden;
 }
 
 .lowercard{
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
   width: 100%;
   background-color: rgba(255,255,255,0.5);
   padding: 15px 20px 20px 20px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.shadow{
+  box-shadow: 0px 14px 10px rgba(0, 0, 0, 0.4);
 }
 
 button{
@@ -262,7 +261,7 @@ button:focus {outline:0;}
   padding: 20px;
 }
 .block-right-inside{
-  max-width: 550px;
+  max-width: 600px;
   margin-right: auto;
 }
 .spacer-bottom{
@@ -272,6 +271,22 @@ button:focus {outline:0;}
   width: 80%;
   height: auto;
   max-width: 270px;
+}
+
+.carousel-control-prev-icon
+{
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 30px 20px;
+}
+
+.carousel-control-next-icon
+{
+  font-family: 'Courier New', Courier, monospace;
+  color: rgba(255,255,255,0.5);
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 30px 20px;
 }
 
 @media screen and (max-width: 1200px) {
