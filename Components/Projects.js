@@ -1,37 +1,79 @@
 import React from "react"
-import { Image, Carousel } from "react-bootstrap"
+import { Image, Carousel, Row, Col } from "react-bootstrap"
 import { animated, useSpring } from "react-spring"
 
 const Projects=()=>{
-    const [flip,setFlip] = React.useState(true)
+    const [moti,setMoti] = React.useState(true)
+    const [domi,setDomi] = React.useState(false)
+    const [moti2,setMoti2] = React.useState(true)
+    const [domi2,setDomi2] = React.useState(false)
     const fade = useSpring({
-        opacity: flip? 1:0,
+        opacity: moti2? 1:0,
+        paddingTop: moti2? "0px":"50px",
     })
     const fade2 = useSpring({
-        opacity: flip? 0:1,
+        opacity: domi2? 1:0,
+        paddingTop: domi2? "0px":"50px",
     })
 
     const styleDiv = {height:"25vh",overflow:"hidden"}
     const styleImg = {width:"100%",height:"auto"}
 
+    const flip = () =>{
+        if(moti){
+            setMoti2(false)
+            setTimeout(()=>{
+                setMoti(false)
+                setDomi(true)
+                setDomi2(true)
+            },300)
+        } else if(domi){
+            setDomi2(false)
+            setTimeout(()=>{
+                setMoti2(true)
+                setMoti(true)
+                setDomi(false)
+            },300)
+        }
+    }
+
+    const arrow = () =>{
+        return(
+            <Row className="m-0">
+                <Col style={{width:"100%", textAlign: "left"}}>
+                    <Image className={moti?"choose-active-2":"choose-passive-2"} src="/images/motimanager-logo.png"  roundedCircle onClick={flip}/>
+                </Col>
+                <Col>
+                <a href={moti?"https://motimanager.com":"https://dominaire.nao-mori.com"} target="_blank" rel="noopener noreferrer">
+                    <button>Visit</button>
+                </a>
+                </Col>
+                <Col style={{width:"100%", textAlign: "right"}}>
+                    <Image className={domi?"choose-active-2":"choose-passive-2"}  src="/images/dominaire-logo.png"  roundedCircle onClick={flip}/>
+                </Col>
+            </Row>
+        )
+    }
+
     return(
         <div className="text-center" style={{minHeight:"100vh"}}>
-            <h1>My Projects</h1>
+            <h1>My Personal Projects</h1>
             <div className="container-component">
                 <div className="block-left">
                     <div className="chooser">
-                        <div className={!flip?"box bouce7":null}>
-                            <Image src="/images/motimanager-logo.png" roundedCircle className={"choose "+(flip?"choose-active":"choose-passive box bounce-7")} onClick={()=>setFlip(true)}/>
-                            {!flip?<h5 className="box bounce-7">See me too!</h5>:null}
+                        <div>
+                            <Image src="/images/motimanager-logo.png" roundedCircle className={"choose "+(moti?"choose-active":"choose-passive box bounce-7")}
+                            onClick={flip}/>
+                            <h5>2nd Project</h5>
                         </div>
                         <div>
-                            <Image src="/images/dominaire-logo.png"  roundedCircle className={"choose "+(!flip?"choose-active":"choose-passive box bounce-7")} onClick={()=>setFlip(false)}/>
-                            {flip?<h5 className="box bounce-7">See me too!</h5>:null}
+                            <Image src="/images/dominaire-logo.png"  roundedCircle className={"choose "+(domi?"choose-active":"choose-passive box bounce-7")} onClick={flip}/>
+                            <h5>1st Project</h5>
                         </div>
                     </div>
                 </div>
                 <div className="block-right">
-                    {flip?
+                    {moti?
                     
                     <animated.div className="block-right-inside" style={fade}>
                         <div className="shadow">
@@ -87,13 +129,11 @@ const Projects=()=>{
                                         <div className="circle-small">MongoDB</div>
                                     </div>
                                 </div>
-                                <a href="https://motimanager.com" target="_blank" rel="noopener noreferrer">
-                                    <button>Visit</button>
-                                </a>
+                                {arrow()}
                             </div>
                         </div>
                     </animated.div>
-                    :
+                    :domi?
                     <animated.div className="block-right-inside" style={fade2}>
                         <div className="shadow">
                             <div className="uppercard">
@@ -144,12 +184,11 @@ const Projects=()=>{
                                         <div className="circle-small">AWS</div>
                                     </div>
                                 </div>
-                                <a href="https://dominaire.nao-mori.com" target="_blank" rel="noopener noreferrer">
-                                    <button>Visit</button>
-                                </a>
+                                {arrow()}
                             </div>
                         </div>
-                    </animated.div>}
+                    </animated.div>
+                    :null}
                 </div>
             </div>
         </div>
