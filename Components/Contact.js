@@ -36,7 +36,7 @@ const Contact=props=>{
                 'gmail',
                 'template_E4vRe8bo',
                 templateParams,
-                'user_DidFMxhza8zx9YgRNBTYS'
+                '<insert your emailjs userid>'
             ).then(()=>setsent(true)).catch()
         }
     }
