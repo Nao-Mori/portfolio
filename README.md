@@ -5,4 +5,4 @@ Libraries used:<br/>
 ・react-fontawesome
 ・emailjs-com
 <br/>
-Deployed through Amazon S3 / Cloudfront
+Deployed over Amazon S3 / Cloudfront
