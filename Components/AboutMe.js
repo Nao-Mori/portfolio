@@ -6,7 +6,7 @@ import { faMapMarkerAlt, faFlag } from '@fortawesome/free-solid-svg-icons'
 const pink = "#FF8178"
 const green = "#7EBF83"
 
-const AboutMe=()=>{
+const AboutMe=props=>{
     return(
         <div className="text-center" style={{minHeight:"100vh"}}>
             <h1>About Me</h1>
@@ -43,7 +43,7 @@ const AboutMe=()=>{
                         <img alt="profile" src="/images/profile.jpg" className="profile mb-3"/>
                         <h2>Nao Mori</h2>
                         <h5 className="mb-3">
-                            I'm a Full Stack Web Developer. I have serious passion for creating responsive web apps that are easy to use, fast and fun.
+                            I'm a Web Developer. I have serious passion for creating responsive web apps that are easy to use, fast and fun.
                         </h5>
                         <div style={{fontSize:"20px"}}>
                         <FontAwesomeIcon icon={faMapMarkerAlt} style={{color:green}}/> Düsseldorf/Germany

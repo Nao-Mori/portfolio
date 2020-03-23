@@ -1,55 +1,97 @@
-import React from "react"
+import React, { useState } from "react"
 import { Image, Carousel, Row, Col } from "react-bootstrap"
 import { animated, useSpring } from "react-spring"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowCircleLeft, faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
 
-const Projects=()=>{
-    const [moti,setMoti] = React.useState(true)
-    const [domi,setDomi] = React.useState(false)
-    const [moti2,setMoti2] = React.useState(true)
-    const [domi2,setDomi2] = React.useState(false)
+const datas = [
+    {
+        name: "Motimanager",
+        description: "A fun app that motivates you and manages your tasks. Connect with your friends and compete with them on how productive you are!",
+        skills: ["HTML", "CSS", "React.js"],
+        url: "motimanager.com/demo",
+        src: "motimanager-logo",
+        screenshot: [1,2,3,4],
+        position: [0, 10]
+    },
+    {
+        name: "Eat in Kyoto",
+        description: 'description for sea survival',
+        skills: ["HTML", "CSS", "React.js"],
+        url: "eatinkyoto.nao-mori.com",
+        src: "eatinkyoto-logo",
+        screenshot: [1,2,3],
+        position: [0, 37]
+    },
+    {
+        name: "Artikel",
+        description: 'description for sea survival',
+        skills: ["HTML", "CSS", "React.js"],
+        url: "artikel.nao-mori.com",
+        src: "artikel-logo",
+        screenshot: [1,2,3],
+        position: [0, 64]
+    },
+    {
+        name: "Dominaire",
+        description: '3 person strategy board game, occupy the city and be the "Dominaire"!',
+        skills: ["HTML", "CSS", "React.js"],
+        url: "dominaire.nao-mori.com",
+        src: "dominaire-logo",
+        screenshot: [1,2,3],
+        position: [50, 10]
+    },
+    {
+        name: "Sea Survival",
+        description: 'description for sea survival',
+        skills: ["HTML", "CSS", "React.js"],
+        url: "seasurvival.nao-mori.com",
+        src: "seasurvival-logo",
+        screenshot: [1,2,3],
+        position: [50, 37]
+    }
+]
+
+let current = 0
+
+const Projects = ({laterLoad}) => {
+    const [project, setProject] = useState(datas[0])
+    const [pushed, setPushed] = useState(false)
+
     const fade = useSpring({
-        opacity: moti2? 1:0,
-        paddingTop: moti2? "0px":"50px",
-    })
-    const fade2 = useSpring({
-        opacity: domi2? 1:0,
-        paddingTop: domi2? "0px":"50px",
+        opacity: pushed? 0 : 1,
+        paddingTop: pushed? "30px" : "0px"
     })
 
-    const styleDiv = {height:"25vh",overflow:"hidden"}
     const styleImg = {width:"100%",height:"auto"}
 
-    const flip = () =>{
-        if(moti){
-            setMoti2(false)
+    const flip = num =>{
+        if(num !== current){
+            setPushed(true)
+            current = num === datas.length? 0 : num === -1? datas.length - 1 : num
             setTimeout(()=>{
-                setMoti(false)
-                setDomi(true)
-                setDomi2(true)
-            },300)
-        } else if(domi){
-            setDomi2(false)
-            setTimeout(()=>{
-                setMoti2(true)
-                setMoti(true)
-                setDomi(false)
-            },300)
+                setPushed(false)
+                setProject(datas[current])
+            },400)
         }
     }
 
     const arrow = () =>{
         return(
             <Row className="m-0">
-                <Col style={{width:"100%", textAlign: "left"}}>
-                    <Image className={moti?"choose-active-2":"choose-passive-2"} src="/images/motimanager-logo.png"  roundedCircle onClick={flip}/>
+                <Col style={{width:"100%", textAlign: "left", padding: 0}}>
+                    <FontAwesomeIcon className="arrow-button" icon={faArrowCircleLeft}  onClick={()=>flip(current - 1)}/>
                 </Col>
                 <Col>
-                <a href={moti?"https://motimanager.com":"https://dominaire.nao-mori.com"} target="_blank" rel="noopener noreferrer">
+                <a href={`https://${project.url}`} target="_blank" rel="noopener noreferrer">
                     <button>Visit</button>
                 </a>
+                <a href={"https://github.com/Nao-Mori/"} target="_blank" rel="noopener noreferrer">
+                    <button className="green mt-2">Github</button>
+                </a>
                 </Col>
-                <Col style={{width:"100%", textAlign: "right"}}>
-                    <Image className={domi?"choose-active-2":"choose-passive-2"}  src="/images/dominaire-logo.png"  roundedCircle onClick={flip}/>
+                <Col style={{width:"100%", textAlign: "right", padding: 0}}>
+                    <FontAwesomeIcon className="arrow-button" icon={faArrowCircleRight} onClick={()=>flip(current + 1)}/>
                 </Col>
             </Row>
         )
@@ -61,134 +103,64 @@ const Projects=()=>{
             <div className="container-component">
                 <div className="block-left">
                     <div className="chooser">
-                        <div>
-                            <Image src="/images/motimanager-logo.png" roundedCircle className={"choose "+(moti?"choose-active":"choose-passive box bounce-7")}
-                            onClick={flip}/>
-                            <h5>2nd Project</h5>
-                        </div>
-                        <div>
-                            <Image src="/images/dominaire-logo.png"  roundedCircle className={"choose "+(domi?"choose-active":"choose-passive box bounce-7")} onClick={flip}/>
-                            <h5>1st Project</h5>
-                        </div>
+                        {datas.map((data, key)=>{
+                            return(
+                                <div style={{ position: "absolute", top:`${data.position[0]}%`, left: `${data.position[1]}%`, width:"25%" }} key={key}>
+                                    <Image
+                                        src = {`/images/${data.src}.png`}
+                                        roundedCircle
+                                        className={"choose "+(project.name ===  data.name? "choose-active":"choose-passive box bounce-7")}
+                                        onClick={()=>flip(key)}
+                                    />
+                                    <h5>{data.name}</h5>
+                                </div>
+                            )
+                        })}
                     </div>
                 </div>
                 <div className="block-right">
-                    {moti?
-                    
-                    <animated.div className="block-right-inside" style={fade}>
+                    <animated.div style={fade} className="block-right-inside">
                         <div className="shadow">
                             <div className="uppercard">
-                                <Carousel  style={{color:"black",backgroundColor:"black"}}>
-                                    <Carousel.Item>
-                                        <div style={styleDiv}>
-                                            <img
-                                            className="d-block"
-                                            src="/images/motimanager-screenshot.png"
-                                            alt="First slide"
-                                            style={styleImg}
-                                            />
-                                        </div>
-                                    </Carousel.Item>
-                                    <Carousel.Item>
-                                        <div style={styleDiv}>
-                                            <img
-                                            className="d-block"
-                                            src="/images/motimanager-screenshot2.png"
-                                            alt="Second slide"
-                                            style={styleImg}
-                                            />
-                                        </div>
-                                    </Carousel.Item>
-                                    <Carousel.Item>
-                                        <div style={styleDiv}>
-                                            <img
-                                            className="d-block"
-                                            src="/images/motimanager-screenshot3.png"
-                                            alt="Third slide"
-                                            style={styleImg}
-                                            />
-                                        </div>
-                                    </Carousel.Item>
-                                </Carousel>
+                                <a href={`https://${project.url}`} target="_blank" rel="noopener noreferrer">
+                                    <Carousel style={{color:"black",backgroundColor:"black"}}>
+                                        {project.screenshot.map((screenshot, key)=>{
+                                            return(
+                                                <Carousel.Item key={key}>
+                                                    <div className="slide-pic">
+                                                        {laterLoad?
+                                                            <img
+                                                            className="d-block"
+                                                            src = {`/images/${project.name}-screenshot${screenshot}.jpg`}
+                                                            alt = {project.name}
+                                                            style={styleImg}
+                                                            />
+                                                        :null}
+                                                    </div>
+                                                </Carousel.Item>
+                                            )
+                                        })}
+                                    </Carousel>
+                                </a>
                             </div>
                             <div className="lowercard">
                                 <div height="50px">
-                                <img src={`/images/motimanager-11.png`} alt="motimanager" className="project-img"/>
+                                    <img src={`/images/motimanager-11.png`} alt="motimanager" className="project-img"/>
                                 </div>
                                 <h6 className="mt-4">
-                                    A fun app that motivates you and manages your tasks. Connect with your friends and compete them on how productive you are!
+                                    {project.description}
                                 </h6>
                                 <div style={{margin:"0 auto",paddingBottom:"20px",textAlign:"center"}}>
                                     <div className="container-component">
-                                        <div className="circle-small">HTML</div>
-                                        <div className="circle-small">CSS</div>
-                                        <div className="circle-small">JavaScript</div>
-                                        <div className="circle-small">React.js</div>
-                                        <div className="circle-small">AWS</div>
-                                        <div className="circle-small">Node.js</div>
-                                        <div className="circle-small">MongoDB</div>
+                                        {project.skills.map((skill, key)=>{
+                                            return <div key={key} className="circle-small">{skill}</div>
+                                        })}
                                     </div>
                                 </div>
                                 {arrow()}
                             </div>
                         </div>
                     </animated.div>
-                    :domi?
-                    <animated.div className="block-right-inside" style={fade2}>
-                        <div className="shadow">
-                            <div className="uppercard">
-                                <Carousel>
-                                    <Carousel.Item>
-                                        <div style={styleDiv}>
-                                        <img
-                                        className="d-block"
-                                        src="/images/dominaire-screenshot.png"
-                                        alt="First slide"
-                                        style={styleImg}
-                                        />
-                                        </div>
-                                    </Carousel.Item>
-                                    <Carousel.Item>
-                                    <div style={styleDiv}>
-                                        <img
-                                        className="d-block"
-                                        src="/images/dominaire-screenshot2.png"
-                                        alt="Third slide"
-                                        style={styleImg}
-                                        />
-                                        </div>
-                                    </Carousel.Item>
-                                    <Carousel.Item>
-                                    <div style={styleDiv}>
-                                        <img
-                                        className="d-block"
-                                        src="/images/dominaire-screenshot3.png"
-                                        alt="Third slide"
-                                        style={styleImg}
-                                        />
-                                        </div>
-                                    </Carousel.Item>
-                                </Carousel>
-                            </div>
-                            <div className="lowercard">
-                                <div height="50px">
-                                <h1 style={{fontFamily:'Rye',paddingTop:"0",fontWeight:"lighter"}}>DOMINAIRE</h1>
-                                </div>
-                                <h6 className="mt-2">3 person strategy board game, occupy the city and be the "Dominaire"!</h6>
-                                <div style={{margin:"0 auto",paddingBottom:"20px"}}>
-                                    <div className="container-component">
-                                        <div className="circle-small">HTML</div>
-                                        <div className="circle-small">CSS</div>
-                                        <div className="circle-small">JavaScript</div>
-                                        <div className="circle-small">React.js</div>
-                                        <div className="circle-small">AWS</div>
-                                    </div>
-                                </div>
-                                {arrow()}
-                            </div>
-                        </div>
-                    </animated.div>
-                    :null}
                 </div>
             </div>
         </div>

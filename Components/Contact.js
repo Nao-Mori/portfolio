@@ -36,7 +36,7 @@ const Contact=props=>{
                 'gmail',
                 'template_E4vRe8bo',
                 templateParams,
-                '<insert your emailjs userid>'
+                'user_DidFMxhza8zx9YgRNBTYS'
             ).then(()=>setsent(true)).catch()
         }
     }
@@ -45,7 +45,8 @@ const Contact=props=>{
         <div className="text-center" style={{minHeight:"88vh"}}>
             <h1>Contact Me!</h1>
             <div className="container-component">
-                <div className="block-left"/>
+                <div className="block-left">
+                </div>
                 <div className="block-right">
                     <div className="block-right-inside">
                         {sent?
@@ -65,7 +66,7 @@ const Contact=props=>{
                                     value={mail}
                                     onChange={event=>setmail(event.target.value)}
                                     className="input-custom"
-                                    style={{paddingTop:!mail?"0":"20px"}}
+                                    style={{paddingTop:!mail?"0":"20px", boxShadow: "0px 5px 10px rgba(0,0,0,0.3)", border:"none"}}
                                 />
                             </div>
                             <div className="position-relative">
@@ -75,7 +76,7 @@ const Contact=props=>{
                                     value={name}
                                     onChange={event=>setname(event.target.value)}
                                     className="input-custom"
-                                    style={{paddingTop:!name?"0":"20px"}}
+                                    style={{paddingTop:!name?"0":"20px", boxShadow: "0px 5px 10px rgba(0,0,0,0.3)", border:"none"}}
                                 />
                             </div>
                             <div className="position-relative">
@@ -89,7 +90,7 @@ const Contact=props=>{
                                     type="text"
                                     value={message}
                                     onChange={event=>setmessage(event.target.value)}
-                                    style={{marginBottom: "20px", paddingTop:!message?"8px":"18px",fontSize:"18px",height:"150px",borderRadius:"25px"}}
+                                    style={{marginBottom: "20px", paddingTop:!message?"8px":"18px",fontSize:"18px",height:"150px",borderRadius:"25px", boxShadow: "0px 5px 10px rgba(0,0,0,0.3)", border:"none"}}
                                 />
                             </div>
                             {sending?

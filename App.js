@@ -106,10 +106,10 @@ const App = props => {
                 </Link>
             </div>
             <div ref={aboutmeRef} name="aboutme"><AboutMe /></div>
-            {laterLoad?
-                <div ref={projectRef} name="project"><Projects /></div>
-            :null}
-            <div ref={blogRef} name="blog"><Blog /></div>
+            
+            <div ref={projectRef} name="project"><Projects laterLoad={laterLoad} /></div>
+
+            <div ref={blogRef} name="blog"><Blog laterLoad={laterLoad} /></div>
             <div ref={contactRef} name="contact"><Contact goTop={()=>scrollTo(top)} /></div>
             <div className="spacer-bottom"/>
             <footer className="text-center">

@@ -1,10 +1,10 @@
-import React, { useState } from "react"
+import React from "react"
 import { Image } from "react-bootstrap"
 
 const articles = [
     {
-        title: "Turn your ADHD Tendencies into your Strength",
-        body: "1"
+        title: "How I Turned my ADHD Tendencies into my Strengths",
+        body: " There are good days where you are so focused and spend the entire day being so productive. How"
     },
     {
         title: "Turn your ADHD Tendencies into your Strength",
@@ -12,13 +12,12 @@ const articles = [
     }
 ]
 
-const Projects = () => {
-    const [page, setPage] = useState(0)
+const Projects = ({laterLoad}) => {
     return(
         <div className="text-center" style={{minHeight:"100vh"}}>
             <h1>Blog</h1>
             <div className="container-component">
-                <div className="block-left">
+                <div className="block-left" style={{padding:"0 15px"}}>
                     <div style={{height:"4vw"}}/>
                     <a href="https://blog.nao-mori.com" target="_blank" rel="noopener noreferrer">
                     <div 
@@ -29,42 +28,36 @@ const Projects = () => {
                         }}
                         className="blog"
                     >
-                    <h2 style={{margin:0, paddingTop:"10px", textDecoration:"none"}}>
-                        {/* <img alt="icon" src="/apple-icon-blue.png" style={{width:"30px"}}/>{" "} */}
+                    <h3 style={{margin:0, paddingTop:"10px", textDecoration:"none"}}>
                         Get to know me more!
-                    </h2>
-                    <Image roundedCircle src="/images/bloggif.gif" style={{maxWidth:"300px", margin:"10px 0"}} />
-                    <h4>Click here to visit</h4>
+                    </h3>
+                    {laterLoad?
+                    <Image roundedCircle src={laterLoad?"/images/bloggif.gif":""} style={{maxWidth:"300px", margin:"10px 0", width:"100%"}} />
+                    :null}
+                    <h3 style={{fontWeight:"normal"}}>Click here to visit</h3>
                     </div>
                     </a>
                     <p/>
                 </div>
                 <div className="block-right">
-                <div className="block-right-inside">
-                {/* <div style={{backgroundColor:"rgba(20,0,0,0.4)",color:"white",padding:"30px 10%", borderRadius:"20px"}}> */}
-                    <div className="shadow"
-                    style={{backgroundColor:"rgb(255,253,249)",color:"black", padding:"10px",borderRadius:"7px", fontFamily:"Franklin Gothic Medium"}}>
-                    <Image rounded style={{width:"80%"}} src={`/images/blog${page + 1}.jpg`}/>
-                    <h3 style={{fontWeight:"bolder",marginTop:"20px"}}>{articles[page].title}</h3>
-                    <h4 style={{padding:"10px 5%", textAlign:"left"}}>{articles[page].body}</h4>
-                    <div style={{display:"flex", maxWidth:"450px",margin:"0 auto"}}>
-                        <a href={`https://blog.nao-mori.com/post${page + 1}`} target="_blank" rel="noopener noreferrer">
-                        <h5 className="link">Read More</h5>
-                        </a>
-                        {!page?
-                        <div onClick={() => setPage(page + 1)} style={{marginLeft:"auto", cursor:"pointer"}}>
-                        <h5 className="link">Next Article</h5>
+                    <div className="block-right-inside blog">
+                        <h3 style={{paddingTop:"5px"}}>Top Article</h3>
+                    <a href={`https://blog.nao-mori.com/post2`} target="_blank" rel="noopener noreferrer">
+                        <div className="shadow"
+                            style={{backgroundColor:"rgb(255,253,249)",color:"black", padding:"10px", borderRadius:"7px", fontFamily:"Franklin Gothic Medium"}}
+                        >
+                            <Image rounded style={{width:"80%"}} src={`/images/blog1.jpg`}/>
+                            <h3 style={{fontWeight:"bolder",marginTop:"20px"}}>
+                                How I Turned my ADHD Tendencies <br/> into my Strengths
+                            </h3>
+                            <h4 style={{padding:"10px 5%", textAlign:"left"}}>
+                                {articles[0].body}
+                                ...
+                            </h4>
                         </div>
-                        :
-                        <a href={`https://blog.nao-mori.com`} style={{marginLeft:"auto"}} target="_blank" rel="noopener noreferrer">
-                        <h5 className="link" >More Articles</h5>
                         </a>
-                        }
-                    </div>
-                    </div>
                     </div>
                 </div>
-                {/* </div> */}
             </div>
         </div>
     )
