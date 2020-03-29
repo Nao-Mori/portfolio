@@ -3,54 +3,7 @@ import { Image, Carousel, Row, Col } from "react-bootstrap"
 import { animated, useSpring } from "react-spring"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowCircleLeft, faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
-
-const datas = [
-    {
-        name: "Motimanager",
-        description: "A fun app that motivates you and manages your tasks. Connect with your friends and compete with them on how productive you are!",
-        skills: ["HTML", "CSS", "React.js"],
-        url: "motimanager.com/demo",
-        src: "motimanager-logo",
-        screenshot: [1,2,3,4],
-        position: [0, 10]
-    },
-    {
-        name: "Eat in Kyoto",
-        description: 'description for sea survival',
-        skills: ["HTML", "CSS", "React.js"],
-        url: "eatinkyoto.nao-mori.com",
-        src: "eatinkyoto-logo",
-        screenshot: [1,2,3],
-        position: [0, 37]
-    },
-    {
-        name: "Artikel",
-        description: 'description for sea survival',
-        skills: ["HTML", "CSS", "React.js"],
-        url: "artikel.nao-mori.com",
-        src: "artikel-logo",
-        screenshot: [1,2,3],
-        position: [0, 64]
-    },
-    {
-        name: "Dominaire",
-        description: '3 person strategy board game, occupy the city and be the "Dominaire"!',
-        skills: ["HTML", "CSS", "React.js"],
-        url: "dominaire.nao-mori.com",
-        src: "dominaire-logo",
-        screenshot: [1,2,3],
-        position: [50, 10]
-    },
-    {
-        name: "Sea Survival",
-        description: 'description for sea survival',
-        skills: ["HTML", "CSS", "React.js"],
-        url: "seasurvival.nao-mori.com",
-        src: "seasurvival-logo",
-        screenshot: [1,2,3],
-        position: [50, 37]
-    }
-]
+import { datas } from "./projectData"
 
 let current = 0
 
@@ -86,9 +39,11 @@ const Projects = ({laterLoad}) => {
                 <a href={`https://${project.url}`} target="_blank" rel="noopener noreferrer">
                     <button>Visit</button>
                 </a>
-                <a href={"https://github.com/Nao-Mori/"} target="_blank" rel="noopener noreferrer">
-                    <button className="green mt-2">Github</button>
-                </a>
+                {project.src !== "seasurvival" && project.src !== "themayor"? 
+                    <a href={`https://github.com/Nao-Mori/${project.src}`} target="_blank" rel="noopener noreferrer">
+                        <button className="green mt-2">Github</button>
+                    </a>
+                :null}
                 </Col>
                 <Col style={{width:"100%", textAlign: "right", padding: 0}}>
                     <FontAwesomeIcon className="arrow-button" icon={faArrowCircleRight} onClick={()=>flip(current + 1)}/>
@@ -107,9 +62,9 @@ const Projects = ({laterLoad}) => {
                             return(
                                 <div style={{ position: "absolute", top:`${data.position[0]}%`, left: `${data.position[1]}%`, width:"25%" }} key={key}>
                                     <Image
-                                        src = {`/images/${data.src}.png`}
+                                        src = {`/images/${data.src}-logo.png`}
                                         roundedCircle
-                                        className={"choose "+(project.name ===  data.name? "choose-active":"choose-passive box bounce-7")}
+                                        className={"choose "+(project.name ===  data.name? "choose-active":"choose-passive")}
                                         onClick={()=>flip(key)}
                                     />
                                     <h5>{data.name}</h5>
@@ -123,15 +78,15 @@ const Projects = ({laterLoad}) => {
                         <div className="shadow">
                             <div className="uppercard">
                                 <a href={`https://${project.url}`} target="_blank" rel="noopener noreferrer">
-                                    <Carousel style={{color:"black",backgroundColor:"black"}}>
+                                    <Carousel style={{color:"black",backgroundColor:"black"}}  className="slide-pic">
                                         {project.screenshot.map((screenshot, key)=>{
                                             return(
                                                 <Carousel.Item key={key}>
-                                                    <div className="slide-pic">
+                                                    <div>
                                                         {laterLoad?
                                                             <img
                                                             className="d-block"
-                                                            src = {`/images/${project.name}-screenshot${screenshot}.jpg`}
+                                                            src = {`/images/screenshots/${project.src}-screenshot${screenshot}.jpg`}
                                                             alt = {project.name}
                                                             style={styleImg}
                                                             />
@@ -145,9 +100,13 @@ const Projects = ({laterLoad}) => {
                             </div>
                             <div className="lowercard">
                                 <div height="50px">
-                                    <img src={`/images/motimanager-11.png`} alt="motimanager" className="project-img"/>
+                                    {project.name === "Motimanager" ?
+                                        <img src={`/images/motimanager-11.png`} alt="motimanager" className="project-img"/>
+                                    :
+                                        <h1 style={{ padding: 0 }}>{project.name}</h1>
+                                    }
                                 </div>
-                                <h6 className="mt-4">
+                                <h6 className="mt-3">
                                     {project.description}
                                 </h6>
                                 <div style={{margin:"0 auto",paddingBottom:"20px",textAlign:"center"}}>

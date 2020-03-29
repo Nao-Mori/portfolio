@@ -14,25 +14,28 @@ const AboutMe=props=>{
                 <div className="block-left">
                     <div className="container-skills">
                     <div className="skills">
-                       <div className="circle" style={{top:"67.5%",left:"13.5%",backgroundColor:pink}}>
+                       <div className="circle" style={{top:"67.5%",left:"13.5%", backgroundColor: pink}}>
                            <div className="circle-text">HTML</div>
                         </div>
-                       <div className="circle" style={{top:"40%",left:"0%",backgroundColor:green}}>
+                       <div className="circle" style={{top:"40%",left:"0%", backgroundColor: green}}>
                             <div className="circle-text">CSS</div>
                        </div>
                        <div className="circle" style={{top:"13.5%",left:"13.5%"}}>
                             <div className="circle-text">JavaScript</div>
                        </div>
-                       <div className="circle" style={{top:"0%",left:"40%",backgroundColor:green}}>
+                       <div className="circle" style={{top:"0%",left:"40%",backgroundColor: pink}}>
+                       <div className="circle-text">TypeScript</div>
+                       </div>
+                       <div className="circle" style={{top:"13.5%",left:"67.5%",backgroundColor: green}}>
                        <div className="circle-text">React.js</div>
                        </div>
-                       <div className="circle" style={{top:"13.5%",left:"67.5%",backgroundColor:pink}}>
+                       <div className="circle" style={{top:"40%",left:"80%"}}>
                        <div className="circle-text">Node.js</div>
                        </div>
-                       <div className="circle" style={{top:"40%",left:"80%",backgroundColor:green}}>
+                       <div className="circle" style={{top:"67.5%",left:"67.5%", backgroundColor: green}}>
                        <div className="circle-text">MongoDB</div>
                        </div>
-                       <div className="circle" style={{top:"67.5%",left:"67.5%"}}>
+                       <div className="circle" style={{top:"80%",left:"40%"}}>
                        <div className="circle-text">AWS</div>
                        </div>
                     </div>

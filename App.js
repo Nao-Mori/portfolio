@@ -119,7 +119,7 @@ const App = props => {
                 <a href="https://www.facebook.com/profile.php?id=100012798553121" target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon className="brand-icon" size="3x" icon={faFacebook}/>
                 </a>
-                <a href="https://www.linkedin.com/in/nao-mori-878223171/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/nao-mori/" target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon className="ml-4 brand-icon" size="3x" icon={faLinkedin}/>
                 </a>
                 <div className="pt-2">©Nao Mori 2020</div>
