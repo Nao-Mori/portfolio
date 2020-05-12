@@ -5,17 +5,9 @@ export const datas = [
         skills: ["HTML", "CSS", "JavaScript", "React.js", "Node.js", "MongoDB", "AWS"],
         url: "motimanager.com/demo",
         src: "motimanager",
-        screenshot: [1,2,3,4],
-        position: [0, 10]
-    },
-    {
-        name: "Eat in Kyoto",
-        description: 'Explore my favorite restaurants in my hometown Kyoto!',
-        skills: ["HTML", "CSS", "TypeScript", "React.js", "Google Maps API", "AWS"],
-        url: "eatinkyoto.nao-mori.com",
-        src: "eatinkyoto",
-        screenshot: [1,2],
-        position: [0, 37]
+        screenshot: [1,2,3],
+        position: [0, 10],
+        key: 0
     },
     {
         name: "Artikel",
@@ -24,7 +16,18 @@ export const datas = [
         url: "artikel.nao-mori.com",
         src: "artikel",
         screenshot: [1,2],
-        position: [0, 64]
+        position: [0, 37],
+        key: 1,
+    },
+    {
+        name: "Eat in Kyoto",
+        description: 'Explore my favorite restaurants in my hometown Kyoto!',
+        skills: ["HTML", "CSS", "TypeScript", "React.js", "Google Maps API", "AWS"],
+        url: "eatinkyoto.nao-mori.com",
+        src: "eatinkyoto",
+        screenshot: [1,2],
+        position: [0, 64],
+        key: 2
     },
     {
         name: "Dominaire",
@@ -33,7 +36,8 @@ export const datas = [
         url: "dominaire.nao-mori.com",
         src: "dominaire",
         screenshot: [1,2,3],
-        position: [50, 10]
+        position: [50, 10],
+        key: 3
     },
     {
         name: "Sea Survival",
@@ -42,7 +46,8 @@ export const datas = [
         url: "seasurvival.nao-mori.com",
         src: "seasurvival",
         screenshot: [1,2],
-        position: [50, 37]
+        position: [50, 37],
+        key: 4
     },
     {
         name: "The Mayor",
@@ -51,6 +56,7 @@ export const datas = [
         url: "themayor.nao-mori.com",
         src: "themayor",
         screenshot: [1],
-        position: [50, 64]
+        position: [50, 64],
+        key: 5
     }
 ]

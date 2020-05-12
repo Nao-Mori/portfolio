@@ -6,7 +6,7 @@ for (var i = 1; i < 31; i++) {
     arr.push({name:`/tulip/tulip animation-${i}.png`,opa:0});
 }
 
-const Bg=({pos,bgcolor})=>{
+const Bg=({ pos,bgcolor })=>{
     const [bgs]=React.useState(arr)
 
     const fade = useSpring({
@@ -20,7 +20,7 @@ const Bg=({pos,bgcolor})=>{
         zIndex: "-2",
         height: "100vh",
         width: "100vw",
-        backgroundColor:`rgb(${bgcolor})`   
+        background:`${bgcolor}`   
     }
 
     return(

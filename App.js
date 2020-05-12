@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useRef } from "react"
 import { animated, useSpring } from "react-spring"
 import Projects from "./Components/Projects"
 import AboutMe from "./Components/AboutMe"
@@ -13,18 +13,18 @@ import { Link, Element } from 'react-scroll'
 const scrollDuration = 400
 
 const App = props => {
-    const [navshow,setNavshow]=React.useState(false)
-    const [trick,setTrick]=React.useState(false)
-    const [pos,setPos]=React.useState(0)
-    const [bgcolor,setBgcolor]=React.useState([])
-    const [current,setCurrent]=React.useState([])
-    const [laterLoad,setLaterLoad]=React.useState(false)
+    const [navshow, setNavshow] = useState(false)
+    const [trick, setTrick] = useState(false)
+    const [pos, setPos] = useState(0)
+    const [bgcolor, setBgcolor] = useState("")
+    const [current, setCurrent] = useState([])
+    const [laterLoad, setLaterLoad] = useState(false)
     
-    const projectRef = React.useRef()
-    const aboutmeRef = React.useRef()
-    const blogRef = React.useRef()
-    const contactRef = React.useRef()
-    const top = React.useRef()
+    const projectRef = useRef()
+    const aboutmeRef = useRef()
+    const blogRef = useRef()
+    const contactRef = useRef()
+    const top = useRef()
 
 
     const fade = useSpring({
@@ -68,12 +68,12 @@ const App = props => {
             }
             if(contactRef.current.offsetTop<=window.scrollY) setTrick(true)
             else setTrick(false)
-            let pos = typeof window.orientation==="undefined"?Math.round(window.scrollY/95)+1:30
-            let pos2 = typeof window.orientation==="undefined"?Math.round(window.scrollY/100):Math.round(window.scrollY/93)
+            let pos = typeof window.orientation==="undefined" ? Math.round(window.scrollY/95)+1 : 30
+            let pos2 = typeof window.orientation==="undefined" ? Math.round(window.scrollY/80) : Math.round(window.scrollY/65)
             if(pos>29) pos=30
             else if(pos<1) pos=1
             setPos(pos)
-            setBgcolor(String(211+pos2)+",233,"+String(235-pos2))
+            setBgcolor(`linear-gradient( 0.${pos}turn, rgb(${231+pos2},233,${String(235-pos2)}), rgb(${192+pos2},230,${String(255-pos2)}))`)
         },100)
     },[props])
 
@@ -105,7 +105,7 @@ const App = props => {
                     <button>Check Me Out</button>
                 </Link>
             </div>
-            <div ref={aboutmeRef} name="aboutme"><AboutMe /></div>
+            <div ref={aboutmeRef} name="aboutme"><AboutMe pos={pos} /></div>
             
             <div ref={projectRef} name="project"><Projects laterLoad={laterLoad} /></div>
 

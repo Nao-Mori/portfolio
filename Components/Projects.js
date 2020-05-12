@@ -4,12 +4,18 @@ import { animated, useSpring } from "react-spring"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowCircleLeft, faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
 import { datas } from "./projectData"
+import BlurImage from "./BlurImage"
 
 let current = 0
 
-const Projects = ({laterLoad}) => {
+const Projects = ({ laterLoad }) => {
     const [project, setProject] = useState(datas[0])
     const [pushed, setPushed] = useState(false)
+    const [index, setIndex] = useState(0)
+
+    const handleSelect = (selectedIndex, e) => {
+        setIndex(selectedIndex);
+    };
 
     const fade = useSpring({
         opacity: pushed? 0 : 1,
@@ -26,6 +32,7 @@ const Projects = ({laterLoad}) => {
                 setPushed(false)
                 setProject(datas[current])
             },400)
+            handleSelect(0)
         }
     }
 
@@ -77,26 +84,27 @@ const Projects = ({laterLoad}) => {
                     <animated.div style={fade} className="block-right-inside">
                         <div className="shadow">
                             <div className="uppercard">
-                                <a href={`https://${project.url}`} target="_blank" rel="noopener noreferrer">
-                                    <Carousel style={{color:"black",backgroundColor:"black"}}  className="slide-pic">
-                                        {project.screenshot.map((screenshot, key)=>{
-                                            return(
-                                                <Carousel.Item key={key}>
-                                                    <div>
-                                                        {laterLoad?
-                                                            <img
-                                                            className="d-block"
-                                                            src = {`/images/screenshots/${project.src}-screenshot${screenshot}.jpg`}
-                                                            alt = {project.name}
-                                                            style={styleImg}
-                                                            />
-                                                        :null}
-                                                    </div>
-                                                </Carousel.Item>
-                                            )
-                                        })}
-                                    </Carousel>
-                                </a>
+                                <Carousel 
+                                style={{ color:"black", backgroundColor:"black" }} 
+                                className="slide-pic"
+                                touch={true}
+                                activeIndex={index}
+                                onSelect={handleSelect}
+                                >
+                                    {project.screenshot.map((screenshot, key)=>{
+                                        return(
+                                            <Carousel.Item key={key}>
+                                                <BlurImage 
+                                                className = "d-block"
+                                                src = {`/screenshots/${project.src}-screenshot${screenshot}.jpg`}
+                                                alt = {project.name}
+                                                style = {styleImg}
+                                                load = {laterLoad && project.key === current }
+                                                />
+                                            </Carousel.Item>
+                                        )
+                                    })}
+                                </Carousel>
                             </div>
                             <div className="lowercard">
                                 <div height="50px">

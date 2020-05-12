@@ -1,12 +1,17 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt, faFlag } from '@fortawesome/free-solid-svg-icons'
+import Image from "./BlurImage"
 
 
 const pink = "#FF8178"
 const green = "#7EBF83"
 
-const AboutMe=props=>{
+const AboutMe= ({ pos }) =>{
+    const [load, setLoad] = useState(false)
+    useEffect(()=>{
+        if(pos > 1 && !load) setLoad(true)
+    },[pos])
     return(
         <div className="text-center" style={{minHeight:"100vh"}}>
             <h1>About Me</h1>
@@ -15,35 +20,37 @@ const AboutMe=props=>{
                     <div className="container-skills">
                     <div className="skills">
                        <div className="circle" style={{top:"67.5%",left:"13.5%", backgroundColor: pink}}>
-                           <div className="circle-text">HTML</div>
+                           <div>HTML</div>
                         </div>
                        <div className="circle" style={{top:"40%",left:"0%", backgroundColor: green}}>
-                            <div className="circle-text">CSS</div>
+                            <div>CSS</div>
                        </div>
                        <div className="circle" style={{top:"13.5%",left:"13.5%"}}>
-                            <div className="circle-text">JavaScript</div>
+                            <div>JavaScript</div>
                        </div>
                        <div className="circle" style={{top:"0%",left:"40%",backgroundColor: pink}}>
-                       <div className="circle-text">TypeScript</div>
+                       <div>TypeScript</div>
                        </div>
                        <div className="circle" style={{top:"13.5%",left:"67.5%",backgroundColor: green}}>
-                       <div className="circle-text">React.js</div>
+                       <div>React.js</div>
                        </div>
                        <div className="circle" style={{top:"40%",left:"80%"}}>
-                       <div className="circle-text">Node.js</div>
+                       <div>Node.js</div>
                        </div>
                        <div className="circle" style={{top:"67.5%",left:"67.5%", backgroundColor: green}}>
-                       <div className="circle-text">MongoDB</div>
+                       <div>MongoDB</div>
                        </div>
                        <div className="circle" style={{top:"80%",left:"40%"}}>
-                       <div className="circle-text">AWS</div>
+                       <div>AWS</div>
                        </div>
                     </div>
                     </div>
                 </div>
                 <div className="block-right">
                     <div className="block-right-inside">
-                        <img alt="profile" src="/images/profile.jpg" className="profile mb-3"/>
+                        <div style={{height: "300px", marginBottom:"30px"}}>
+                            <Image src="/profile.jpg" alt="profile" className="profile" load={load} />
+                        </div>
                         <h2>Nao Mori</h2>
                         <h5 className="mb-3">
                             I'm a Web Developer. I have serious passion for creating responsive web apps that are easy to use, fast and fun.
