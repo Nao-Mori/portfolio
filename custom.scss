@@ -176,14 +176,14 @@ label {
   width: 100%;
   background-color: rgba(255,255,255,0.5);
   padding: 15px 20px 20px 20px;
-  font-family: 'Franklin Gothic';
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .shadow{
   box-shadow: 0px 14px 10px rgba(0, 0, 0, 0.4);
 }
 
-button{
+button {
   background-color: #FF8178; 
   border: none;
   border-radius: 23px;
@@ -194,8 +194,7 @@ button{
   display: inline-block;
   font-size: 19px;
   box-shadow: 0px 10px 14px rgba(0, 0, 0, 0.2);
-  font-weight: 500;
-  font-family: 'Franklin Gothic';
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   &:hover{
     background-color: rgb(255, 255, 255); 
     color: black;

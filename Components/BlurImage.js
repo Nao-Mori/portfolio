@@ -45,7 +45,7 @@ const BlurImage = props => {
             loadedImages.push(props.src)
             setTimeout(()=>{
                 awaitImage()
-            },200)
+            },100)
         } else setLoaded(true)
     },[props.src])
 
@@ -54,7 +54,7 @@ const BlurImage = props => {
         className={props.className}
         alt={props.alt}
         style={props.style}
-        src={loaded ? `/images${props.src}` : `/images/images64${props.src}`}
+        src={loaded ? `/images${props.src}` : `${props.src64}`}
         />
     )
 }

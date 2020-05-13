@@ -44,7 +44,7 @@ const Projects = ({laterLoad}) => {
                         <h3 style={{paddingTop:"5px"}}>Top Article</h3>
                     <a href={`https://blog.nao-mori.com/post2`} target="_blank" rel="noopener noreferrer">
                         <div className="shadow"
-                            style={{backgroundColor:"rgb(255,253,249)",color:"black", padding:"10px", borderRadius:"7px", fontFamily:"Franklin Gothic Medium"}}
+                            style={{ backgroundColor:"rgb(255,253,249)",color:"black", padding:"10px", borderRadius:"7px" }}
                         >
                             <Image rounded style={{width:"80%"}} src={`/images/blog1.jpg`}/>
                             <h3 style={{fontWeight:"bolder",marginTop:"20px"}}>

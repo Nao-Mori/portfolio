@@ -69,7 +69,7 @@ const App = props => {
             if(contactRef.current.offsetTop<=window.scrollY) setTrick(true)
             else setTrick(false)
             let pos = typeof window.orientation==="undefined" ? Math.round(window.scrollY/95)+1 : 30
-            let pos2 = typeof window.orientation==="undefined" ? Math.round(window.scrollY/80) : Math.round(window.scrollY/65)
+            let pos2 = typeof window.orientation==="undefined" ? Math.round(window.scrollY/80) : Math.round(window.scrollY/70)
             if(pos>29) pos=30
             else if(pos<1) pos=1
             setPos(pos)

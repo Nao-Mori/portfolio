@@ -96,7 +96,8 @@ const Projects = ({ laterLoad }) => {
                                             <Carousel.Item key={key}>
                                                 <BlurImage 
                                                 className = "d-block"
-                                                src = {`/screenshots/${project.src}-screenshot${screenshot}.jpg`}
+                                                src = {`/screenshots/${project.src}-screenshot${key + 1}.jpg`}
+                                                src64 = {`${screenshot}`}
                                                 alt = {project.name}
                                                 style = {styleImg}
                                                 load = {laterLoad && project.key === current }
