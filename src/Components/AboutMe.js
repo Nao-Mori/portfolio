@@ -22,7 +22,7 @@ const AboutMe = ({ pos }) => {
                 className="circle"
                 style={{ top: '67.5%', left: '13.5%', backgroundColor: pink }}
               >
-                <div>HTML</div>
+                <div>Next.js</div>
               </div>
               <div
                 className="circle"

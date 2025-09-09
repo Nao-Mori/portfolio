@@ -1,7 +1,7 @@
+/* global Email */
 import React from 'react';
 import { FormControl, Spinner } from 'react-bootstrap';
 import { animated, useSpring } from 'react-spring';
-import * as emailjs from 'emailjs-com';
 
 var int;
 
@@ -26,21 +26,22 @@ const Contact = (props) => {
       }, 1000);
     } else {
       setSending(true);
-      let templateParams = {
-        from_name: `${name} (${mail})`,
-        to_name: 'Nao',
-        subject: 'new message',
-        message_html: message,
-      };
-      emailjs
-        .send(
-          'gmail',
-          'template_E4vRe8bo',
-          templateParams,
-          'user_DidFMxhza8zx9YgRNBTYS'
-        )
-        .then(() => setsent(true))
-        .catch();
+      Email.send({
+        Host: "smtp.gmail.com",
+        Username: "lockn980@gmail.com",
+        Password: "tymhyplfrjyohrfr",
+        To: "lockn980@gmail.com",
+        From: mail,
+        Subject: `Portfolio Contact from ${name}`,
+        Body: `
+          <b>Name:</b> ${name} <br/>
+          <b>Email:</b> ${mail} <br/>
+          <b>Message:</b><br/> ${message}
+        `
+      }).then(() => {
+        alert(`Currently down... please contact me by email: contact.naomori@gmail.com`)
+        setsent(true)
+      }).catch((err)=>console.log(err));
     }
   };
 

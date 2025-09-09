@@ -153,7 +153,7 @@ const Projects = ({ laterLoad }) => {
               <div className="lowercard">
                 <div height="50px">
                   {project.name === 'SkinMatch.io' ? (
-                    <h1 className="logo-text" style={{ padding: 0 }}>
+                    <h1 className="logo-text" style={{ padding: 0, fontSize: "40px" }}>
                       {project.name}
                     </h1>
                   ) : project.name === 'Motimanager' ? (
@@ -166,13 +166,13 @@ const Projects = ({ laterLoad }) => {
                     <h1 style={{ padding: 0 }}>{project.name}</h1>
                   )}
                 </div>
-                <h6 className="mt-3">{project.description}</h6>
+                <h6 className="mt-3" style={{ minHeight: "40px" }}>{project.description}</h6>
                 <div
                   style={{
                     margin: '0 auto',
                     paddingBottom: '20px',
                     textAlign: 'center',
-                    minHeight: '120px',
+                    minHeight: '90px',
                   }}
                 >
                   <div className="container-component">

@@ -10,6 +10,7 @@ export const datas = [
       'Tailwind',
       'Vercel',
       'Prisma',
+      'Jest'
     ],
     url: 'perfectskincare.vercel.app',
     src: 'skinmatch',
