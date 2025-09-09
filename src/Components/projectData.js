@@ -67,10 +67,10 @@ export const datas = [
         key: 4
     },
     {
-        name: "The Mayor",
-        description: 'Use your reasoning skills to find out who killed the mayor!',
+        name: "Bot Mafia",
+        description: 'Mafia game that is playable with 1~100 players!',
         skills: ["HTML", "CSS", "JavaScript", "AWS"],
-        url: "themayor.nao-mori.com",
+        url: "botmafia.nao-mori.com/",
         src: "themayor",
         screenshot: ["data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/4QBoRXhpZgAATU0AKgAAAAgABAEaAAUAAAABAAAAPgEbAAUAAAABAAAARgEoAAMAAAABAAIAAAExAAIAAAARAAAATgAAAAAAAABgAAAAAQAAAGAAAAABcGFpbnQubmV0IDQuMi4xMAAA/9sAQwACAQEBAQECAQEBAgICAgIEAwICAgIFBAQDBAYFBgYGBQYGBgcJCAYHCQcGBggLCAkKCgoKCgYICwwLCgwJCgoK/9sAQwECAgICAgIFAwMFCgcGBwoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoK/8AAEQgAEQAeAwEhAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A+I/2RP8Agh1+17+3B8Hj8cPgnqngyDR11efTmh1zWJ4ZzLEsbMdsdvINuJBg7s8Hjpn00/8ABs9/wUE0QLe3mtfD1o0dQy2+sX0zHLBRhY7IseTzgYAyTgAmvMrcTZfh8S6MlK6dtlb8zqp5PiqlFTTVnr1/yND/AIhg/wDgoFfJHJB4h+HQ8xd2JNevF/PNnkH2Ir5o/by/4Jb/ALRX/BPDXPDuh/HW58O3knii3uZtNbw7qEtwqrA0avv8yGPB/erjGc89K6cNnmDxuIVKmpXfdLor92Y1str4ek5yasv+G7H0d+wN/wAF9LH9ir4HTfBPS/g/rrWzancags1pc2ZBlkEYPEsbEcRgZ3Ee2ea6jxv/AMHLuteNNSE13+ybdasjNmX+0vGUUW4/dBWNLFlU7P7u3qe5JNUsFl/tOargozl1lz1E36pSSXyPOxEc3nJ+xzGUI9I+zpNJeri2/manhT/g511TwDoYj8L/ALNGr2c7sEmsofE9u0ESKWICF7M+vQKOpFeJ/t/f8FfPhv8A8FDJfC+ufFD4ceKtLvPDEd1Dbw272cyss5jLHcixd4h1B61piMPg4x5sLg406n83PUdvk5Naq626hg6eZU6y+tZhKrDrF06aT+cYp6PXR9D4Tk+/VnSf+PiP/eFelH4kX9kW7/h/3f61U/j/AAol8RMT/9k="],
         position: [50, 64],

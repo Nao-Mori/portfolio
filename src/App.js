@@ -6,7 +6,7 @@ import Contact from "./Components/Contact"
 import Blog from "./Components/Blog"
 import Background from "./Background"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithub, faLinkedin, faFacebook } from '@fortawesome/free-brands-svg-icons'
+import { faGithub, faLinkedin, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
 
 import { Link, Element } from 'react-scroll'
 

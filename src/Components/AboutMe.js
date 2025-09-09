@@ -61,7 +61,7 @@ const AboutMe= ({ pos }) =>{
                             I'm a Web Developer. I have serious passion for creating responsive web apps that are easy to use, fast and fun.
                         </h5>
                         <div style={{fontSize:"20px"}}>
-                        <FontAwesomeIcon icon={faMapMarkerAlt} style={{color:green}}/> Düsseldorf/Germany
+                        <FontAwesomeIcon icon={faMapMarkerAlt} style={{color:green}}/> Seoul/South Korea
                         <FontAwesomeIcon icon={faFlag} style={{color: pink, marginLeft:"15px"}}/> Kyoto/Japan
                         </div>
                     </div>
